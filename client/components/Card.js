@@ -5,9 +5,9 @@ function Card({ media_id, title, category, duration, priority, url, user_id }) {
     <div className="card">
       <h3>{title}</h3>
       <p>category: {category}</p>
-      <p>duration: {duration}</p>
+      <p>duration: {duration} mins</p>
       <p>priority: {priority}</p>
-      <p>{url}</p>
+      <p>url: {url}</p>
     </div>
   )
 };
