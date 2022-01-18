@@ -24,18 +24,17 @@ mediaController.getList = (req, res, next) => {
 };
 
 mediaController.addMedia = (req, res, next) => {
-  // const id = req.query.user_id;
-  const query = 'INSERT INTO media(title, category, duration, priority, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING media_id;';
+  // const user_id = req.query.user_id;
+  const query = 'INSERT INTO media(title, category, duration, priority, url, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING media_id;';
 
   const data = [
     req.body.title,
     req.body.category,
     req.body.duration,
     req.body.priority,
+    req.body.url,
     req.body.user_id
   ];
-
-  // console.log('is addMedia working?')
 
   db.query(query, data)
     .then(() => {
@@ -46,10 +45,41 @@ mediaController.addMedia = (req, res, next) => {
       // console.log(res.locals.film);
     })
     .catch(e => {
-      console.log('error at starWarsController.addCharacter', e);
+      console.log('error at mediaController.addMedia', e);
       return next({
         log: 'Express error handler caught in addMedia middleware error',
         message: { err: 'An error occurred in addMedia middleware error' }
+      });
+    });
+};
+
+mediaController.updateMedia = (req, res, next) => {
+  // const user_id = req.query.user_id;
+  const media_id = req.params.media;
+  // $1 = whichever column user is editing FROM REQ PARAMS
+  // $2 = new info to update FROM REQUEST BODY  
+  const query = 'UPDATE media SET title = $1, category = $2, duration = $3, priority = $4, url = $5, user_id = $6 WHERE media_id = $7';
+
+  const data = [
+    req.body.title,
+    req.body.category,
+    req.body.duration,
+    req.body.priority,
+    req.body.url,
+    req.body.user_id,
+    media_id
+  ];
+
+  db.query(query, data)
+    .then(() => {
+      res.locals.updatedMedia = req.body;
+      return next();
+    })
+    .catch(e => {
+      console.log('error at mediaController.updateMedia', e);
+      return next({
+        log: 'Express error handler caught in updateMedia middleware error',
+        message: { err: 'An error occurred in updateMedia middleware error' }
       });
     });
 };
@@ -65,13 +95,13 @@ mediaController.deleteMedia = (req, res, next)=>{
       return next();
     })
     .catch(e => {
-      console.log('error at starWarsController.addCharacter', e);
+      console.log('error at mediaController.deleteMedia', e);
       return next({
         log: 'Express error handler caught in deleteMedia middleware error',
         message: { err: 'An error occurred in deleteMedia middleware error' }
       });
     });
 
-}
+};
 
 module.exports = mediaController;

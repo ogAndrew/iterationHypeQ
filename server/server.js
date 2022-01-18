@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
@@ -23,6 +24,9 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 //   mediaController.addMedia,
 //   (req, res) => res.status(200).json(res.locals.mediaItem)
 // );
+app.use(cors({
+  origin: '*'
+}));
 
 app.use('/api', apiRouter);
 

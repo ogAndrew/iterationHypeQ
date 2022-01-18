@@ -9,33 +9,13 @@ router.get('/',
   (req, res) => res.status(200).json(res.locals.media)
 );
 
-// router.get('/species',
-//   mediaController.getSpecies,
-//   (req, res) => res.status(200).json(res.locals.species)
-// );
-
-// router.get('/homeworld',
-//   mediaController.getHomeworld,
-//   (req, res) => res.status(200).json(res.locals.homeworld)
-// );
-
-// router.get('/film',
-//   mediaController.getFilm,
-//   (req, res) => res.status(200).json(res.locals.film)
-// );
-
 router.post('/',
   mediaController.addMedia,
   (req, res) => res.status(200).json(res.locals.mediaItem)
 );
 
-// router.patch('/', mediaController.updateMedia, (req, res) => {
-//   // if (!res.locals.updatedmedia) {
-//   res.status(200).json(res.locals.updatedMedia);
-//   // } else {
-//   //   res.status(400);
-//   // }
-// });
+router.patch('/:media', mediaController.updateMedia, (req, res) => res.status(200).json(res.locals.updatedMedia)
+);
 
 // Delete a media from the database
 // http://localhost:3000/api/"media_id"
