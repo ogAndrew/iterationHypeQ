@@ -1,7 +1,17 @@
+* {
+    text-align: center;
+    justify-content: center;
+}
+
+.wrapper {
+    padding: 5px;
+}
+
 body{
     margin: 0;
     padding: 0;
 }
+
 #logo{
     height: 40px;
     width: 40px;
@@ -48,7 +58,7 @@ body{
 }
 
 .ml{
-    margin-left: 20%;
+    margin-left: 5%;
 }
 .list-cont{
     display: flex;
@@ -56,9 +66,8 @@ body{
 }
 
 .add-cont{
-    width: 20%;
+    width: 14%;
 }
-
 
 
 .black{
@@ -106,7 +115,7 @@ font-size: 16px;
 cursor: pointer;
 }
 .card{
-    width: 60%;
+    width: 90%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -118,7 +127,64 @@ cursor: pointer;
     padding-bottom: 1rem;
 }
 
-.card p{
-    font-size: 17px;
-    margin-bottom: 0;
+
+
+/* Filtered Search area */
+
+.three-cols {
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    flex-wrap:wrap;
+}
+
+.three-cols > div {
+    flex: 33.33%;
+}
+
+.three-cols h1{
+    margin-right: .5rem;
+}
+
+.card > p {
+    padding-left: 20px;
+    line-height: 50%;
+}
+
+.first {
+    background-color: rgb(233, 252, 225);
+    border-radius: 25px;
+    padding-left: 10px;
+    margin: 10px;
+}
+
+.second {
+    background-color: rgb(252, 249, 207);
+    border-radius: 25px;
+    padding-left: 10px;
+    margin: 10px;
+}
+
+.third {
+    background-color: rgb(252, 226, 203);
+    border-radius: 25px;
+    padding-left: 10px;
+    margin: 10px;
+}
+
+.tabContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.tab {
+    border-radius: 25px;
+    background-color: lightcoral;
+    width: 200px;
+    height: 50px;
+    margin: 30px 30px 30px 30px;
+}
+
+.option {
+    text-align: center;
 }
