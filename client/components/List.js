@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from '../components/Card.js';
+import AddMedia from "./AddMedia"
 
 function List({ allMedia }) { 
   const components = allMedia.map(obj => {
@@ -12,9 +13,13 @@ function List({ allMedia }) {
   });
 
   return ( 
-    <div>
-      <h2>All Media Items</h2>
+    
+      <div className="list-cont">
+        <div className="add-cont">
+          <AddMedia />
+        </div>
       <div className="flex-container">
+      <div><h1 className="ml">Filter Dropdowns</h1></div>
         {components}
       </div>
     </div>

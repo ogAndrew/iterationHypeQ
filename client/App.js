@@ -3,6 +3,7 @@ import Header from './components/Header';
 import List from './components/List.js';
 import DurationDropdown from './components/DurationDropdown';
 
+
 // const allMedia = [ { media_id: 2, title: "silicon valley", category: "show", duration: 30, priority: 1, url: null, user_id: 1 }, { media_id: 3, title: "queen's gambit" category: "show", duration: 30, priority: 1, url: null, user_id: 1 }, ]
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
 
   return (
     <div className='wrapper'>
+      <Header />
       {/* <div className='tabContainer'><DurationDropdown /></div> */}
+     
       <List allMedia={allMedia} />
     </div>
   );
