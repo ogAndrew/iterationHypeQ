@@ -15,9 +15,7 @@ function AddMedia() {
   })
 
   function handleChange(e) {    
-    const {name, value} = e.target;
-    console.log('name', name)
-    console.log('value', value);
+    const {name, value} = e.target;    
       setMediaInput(prevState => {    
         return {
           ...prevState, 
