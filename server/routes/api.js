@@ -1,5 +1,4 @@
 const express = require('express');
-
 const mediaController = require('../controllers/mediaController');
 
 const router = express.Router();
@@ -19,10 +18,8 @@ router.put('/:id',
   (req, res) => res.status(200).json(res.locals.updatedMedia)
 );
 
-// Delete a media from the database
-// http://localhost:3000/api/"media_id"
 router.delete('/:id', mediaController.deleteMedia, (req, res) => {
-  res.status(200).send();
+  res.status(200).send('succesfully deleted from database');
 });
 
 module.exports = router;
