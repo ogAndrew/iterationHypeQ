@@ -5,7 +5,6 @@ const cors = require('cors');
 const app = express();
 
 const apiRouter = require('./routes/api');
-const mediaController = require('./controllers/mediaController.js');
 
 const PORT = 3000;
 

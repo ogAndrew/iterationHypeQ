@@ -13,11 +13,11 @@ router.post('/',
   (req, res) => res.status(200).json(res.locals.mediaItem)
 );
 
-router.patch('/:media', mediaController.updateMedia, (req, res) => res.status(200).json(res.locals.updatedMedia)
+router.put('/:id', 
+  mediaController.updateMedia, 
+  (req, res) => res.status(200).json(res.locals.updatedMedia)
 );
 
-// Delete a media from the database
-// http://localhost:3000/api/"id"
 router.delete('/:id', mediaController.deleteMedia, (req, res) => {
   res.status(200).send('succesfully deleted from database');
 });

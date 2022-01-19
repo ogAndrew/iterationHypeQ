@@ -1,17 +1,13 @@
-// grab database from models folder
-const db = require('../models/userModels');
+const db = require('../models/mediaModels');
 
 const mediaController = {};
 
-// get all media activities for user_id
 mediaController.getList = (req, res, next) => {
-  // const id = req.query.user_id; // when we have more than one user
   const query = 'SELECT * FROM media';
   db
     .query(query)
     .then(result => {
       res.locals.media = result.rows;
-      // console.log('res.locals.media: ', res.locals.media);
       return next();
     })
     .catch(e => {
@@ -24,8 +20,7 @@ mediaController.getList = (req, res, next) => {
 };
 
 mediaController.addMedia = (req, res, next) => {
-  // const user_id = req.query.user_id;
-  const query = 'INSERT INTO media(title, category, duration, priority, url, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING media_id;';
+  const query = 'INSERT INTO media(title, category, duration, priority, url) VALUES ($1, $2, $3, $4, $5) RETURNING *';
 
   const data = [
     req.body.title,
@@ -33,16 +28,12 @@ mediaController.addMedia = (req, res, next) => {
     req.body.duration,
     req.body.priority,
     req.body.url,
-    req.body.user_id
   ];
 
   db.query(query, data)
-    .then(() => {
-      // console.log('req.body from addMedia controller:', req.body)
-      // console.log('response from addMedia controller:', response);
-      res.locals.mediaItem = req.body;
+    .then((response) => { 
+      res.locals.mediaItem = response.rows[0];
       return next();
-      // console.log(res.locals.film);
     })
     .catch(e => {
       console.log('error at mediaController.addMedia', e);
@@ -54,25 +45,21 @@ mediaController.addMedia = (req, res, next) => {
 };
 
 mediaController.updateMedia = (req, res, next) => {
-  // const user_id = req.query.user_id;
-  const media_id = req.params.media;
-  // $1 = whichever column user is editing FROM REQ PARAMS
-  // $2 = new info to update FROM REQUEST BODY  
-  const query = 'UPDATE media SET title = $1, category = $2, duration = $3, priority = $4, url = $5, user_id = $6 WHERE media_id = $7';
+  const id = req.params.id
 
+  const query = 'UPDATE media SET title = $1, category = $2, duration = $3, priority = $4, url = $5 WHERE id = $6 RETURNING *';
   const data = [
     req.body.title,
     req.body.category,
     req.body.duration,
     req.body.priority,
     req.body.url,
-    req.body.user_id,
-    media_id
+    id,
   ];
 
   db.query(query, data)
-    .then(() => {
-      res.locals.updatedMedia = req.body;
+    .then((response) => {
+      res.locals.updatedMedia = response.rows[0];
       return next();
     })
     .catch(e => {
@@ -83,6 +70,7 @@ mediaController.updateMedia = (req, res, next) => {
       });
     });
 };
+
 
 mediaController.deleteMedia = (req, res, next) => {
   const { id } = req.params; 
