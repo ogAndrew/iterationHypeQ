@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Card from './Card.js';
 import AddMedia from "./AddMedia.js"
+import updateMedia, { fetchMedia } from '../async.js';
 
 const timeOptions = ['Show All', 15, 30, 60, 120, 'unlimited'];
 const categoryOptions = ['Show All', 'show', 'movie', 'podcast', 'video', 'book'];
@@ -20,6 +21,22 @@ function List({ allMedia }) {
     }
   }, [select, allMedia]);
 
+  // handleUpdate(id) 
+  async function handleUpdate(id) {
+    await updateMedia(id);
+    // reset the list with result of fetchMedia
+    setList(await fetchMedia());
+  };
+    // invoke updateMedia(id);
+
+
+   // handleDe deleteMedia(id)lete 
+   async function handleDelete(id) {
+     await deleteMedia(id)
+     setList(await fetchMedia());
+   };
+    // invoke
+
   function filterList(mediaList) {
     if (!mediaList) return;
 
@@ -36,13 +53,16 @@ function List({ allMedia }) {
       return (
         <div className={priority === 1 ? 'first' : priority === 2 ? 'second' : 'third'}>
           <div key={obj.id}>
-            <Card media_id={obj.id} title={obj.title} category={obj.category} duration={obj.duration} priority={obj.priority} url={obj.url} />
+            <Card id={obj.id} title={obj.title} category={obj.category} duration={obj.duration} priority={obj.priority} url={obj.url} 
+            handleUpdate={handleUpdate} handleDelete={handleDelete}/>
           </div>
         </div>
       );
     });
     return components;
   };
+
+  
 
   return (
     <div>
