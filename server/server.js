@@ -5,7 +5,6 @@ const cors = require('cors');
 const app = express();
 
 const apiRouter = require('./routes/api');
-const mediaController = require('./controllers/mediaController');
 
 const PORT = 3000;
 
@@ -20,10 +19,6 @@ app.use(express.static(path.resolve(__dirname, '../client')));
  * define route handlers
  */
 
-// app.post('/',
-//   mediaController.addMedia,
-//   (req, res) => res.status(200).json(res.locals.mediaItem)
-// );
 app.use(cors({
   origin: '*'
 }));
