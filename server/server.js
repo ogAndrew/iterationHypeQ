@@ -1,10 +1,11 @@
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
-
+const passport = require('passport');
 const app = express();
 
 const apiRouter = require('./routes/api');
+const userRouter = require('./routes/userRoutes.js');
 
 const PORT = 3000;
 
@@ -24,6 +25,7 @@ app.use(cors({
 }));
 
 app.use('/api', apiRouter);
+app.use('/user', userRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
