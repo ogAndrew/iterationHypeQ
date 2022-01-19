@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ media_id, title, category, duration, priority, url, user_id }) {
+function Card({ title, category, duration, priority, url }) {
   return(
     <div className="card">
       <div className="title-button-div">
