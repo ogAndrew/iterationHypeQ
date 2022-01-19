@@ -75,22 +75,29 @@ mediaController.updateMedia = (req, res, next) => {
 mediaController.deleteMedia = (req, res, next) => {
   const { id } = req.params; 
   
-  //if id of the media user wants to delete does not exist in the database, throw an error 
-  if (!req.params) {
-    return next ({
-      status: 400, 
-      log: 'DELETE ERROR: Express error handler caught in deleteMedia middleware error',
-      message: 'DELETE ERROR: Could not delete media. Media is not found in request'
-    });
-  };
-
-  const query = `DELETE FROM media WHERE id = '${id}';`;
-
-  db.query(query)
-    .then (() => {
-      return next();
+  const getListItem = `SELECT * FROM media WHERE id = '${id}';` 
+  //get request to check if the id 
+  db.query(getListItem) 
+    .then(response => {
+      if(response.rows.length === 0) {
+        return next({
+          status: 400, 
+          log: 'DELETE ERROR: Express error handler caught in deleteMedia middleware error',
+          message: 'DELETE ERROR: Could not delete media. Media is not found in request'
+        })
+      }
     })
-    .catch (error => console.log(`ERROR: ${error}`));
+    .then(() => {
+      const deleteQuery = `DELETE FROM media WHERE id = '${id}';`;
+      db.query(deleteQuery) 
+        .then(() => {
+          return next()
+        })
+        .catch(error => console.log(`ERROR: ${error}`));
+    })
+    .catch(error => {
+      console.log(error)
+    })
 }
 
 module.exports = mediaController;
