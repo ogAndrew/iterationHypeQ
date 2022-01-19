@@ -6,7 +6,7 @@ const mediaController = {};
 // get all media activities for user_id
 mediaController.getList = (req, res, next) => {
   // const id = req.query.user_id; // when we have more than one user
-  const query = 'SELECT * FROM media WHERE user_id = 1;';
+  const query = 'SELECT * FROM media';
   db
     .query(query)
     .then(result => {

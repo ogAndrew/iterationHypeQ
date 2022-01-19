@@ -1,49 +1,49 @@
 * {
-    text-align: center;
-    justify-content: center;
+  text-align: center;
+  justify-content: center;
 }
 
 .wrapper {
-    padding: 5px;
+  padding: 5px;
 }
 
-body{
-    margin: 0;
-    padding: 0;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-#logo{
-    height: 40px;
-    width: 40px;
+#logo {
+  height: 40px;
+  width: 40px;
 }
-.header-div{
-    background-color: #fd6a02;
-    min-height: 15vh;
-    padding-left: 1rem;
-    padding-top: 1rem;
-    color: #fff;
-   
+.header-div {
+  background-color: #fd6a02;
+  min-height: 15vh;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  color: #fff;
 }
-#title{
-    margin-left: 7px;
-    margin-bottom: 2px;
+#title {
+  margin-left: 7px;
+  margin-bottom: 2px;
 }
 
-.add-form{
-    display: flex;
-    flex-direction: column;
+.add-form {
+  display: flex;
+  flex-direction: column;
 }
-.add-form input, .cat-time{
-    height: 40px;
-    font-size: 17px;
-    border-radius: 5px;
-    margin-top: 1rem;
-    margin-left: .5rem;
+.add-form input,
+.cat-time {
+  height: 40px;
+  font-size: 17px;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
 }
-.add-btn{
-    height: 3rem;
-    padding: 0 2rem;
-    margin-left: .5rem;
+.add-btn {
+  height: 3rem;
+  padding: 0 2rem;
+  margin-left: 0.5rem;
   font-size: 17px;
   border-radius: 6px;
   border: none;
@@ -53,138 +53,130 @@ body{
   font-weight: bold;
 }
 
-.add-btn:hover{
-    cursor: pointer;
+.add-btn:hover {
+  cursor: pointer;
 }
 
-.ml{
-    margin-left: 5%;
+.ml {
+  margin-left: 5%;
 }
-.list-cont{
-    display: flex;
-    width: 100%;
-}
-
-.add-cont{
-    width: 14%;
+.list-cont {
+  display: flex;
+  width: 100%;
 }
 
-
-.black{
-    color: #000;
-}
-.title-button-div{
-    display: flex;
-    margin-right: 1rem;
-    justify-content: space-between;
+.add-cont {
+  width: 14%;
 }
 
-.edit-del{
-    margin-right: 2rem;
-    margin-top: 1rem;
-    display: flex;
-    
+.black {
+  color: #000;
+}
+.title-button-div {
+  display: flex;
+  margin-right: 1rem;
+  justify-content: space-between;
 }
 
-.edit-del button{
-    margin-right: 5px;
-    height: 2rem;
-    
+.edit-del {
+  margin-right: 2rem;
+  margin-top: 1rem;
+  display: flex;
 }
 
-#edit-btn:hover{
-    background-color: green;
-}
-#del-btn:hover{
-    background-color: red;
-}
-.flex-container{
-    min-height: 60vh;
-    width: 70%;
+.edit-del button {
+  margin-right: 5px;
+  height: 2rem;
 }
 
-.fas{
-    
+#edit-btn:hover {
+  background-color: green;
+}
+#del-btn:hover {
+  background-color: red;
+}
+.flex-container {
+  min-height: 60vh;
+  width: 70%;
 }
 
-.fa-edit:hover{
-    
-}
-.fas:hover{
-font-size: 16px;
-cursor: pointer;
-}
-.card{
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    background-color: #333;
-    color: #fff;
-    padding-left: 2rem;
-    margin-bottom: .7rem;
-    border-radius: 25px;
-    padding-bottom: 1rem;
+.fas {
 }
 
-
+.fa-edit:hover {
+}
+.fas:hover {
+  font-size: 16px;
+  cursor: pointer;
+}
+.card {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  color: #fff;
+  padding-left: 2rem;
+  margin-bottom: 0.7rem;
+  border-radius: 25px;
+  padding-bottom: 1rem;
+}
 
 /* Filtered Search area */
 
 .three-cols {
-    display:flex;
-    flex-direction:row;
-    width:100%;
-    flex-wrap:wrap;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .three-cols > div {
-    flex: 33.33%;
+  flex: 33.33%;
 }
 
-.three-cols h1{
-    margin-right: .5rem;
+.three-cols h1 {
+  margin-right: 0.5rem;
 }
 
 .card > p {
-    padding-left: 20px;
-    line-height: 50%;
+  padding-left: 20px;
+  line-height: 50%;
 }
 
 .first {
-    background-color: rgb(233, 252, 225);
-    border-radius: 25px;
-    padding-left: 10px;
-    margin: 10px;
+  background-color: rgb(233, 252, 225);
+  border-radius: 25px;
+  padding-left: 10px;
+  margin: 10px;
 }
 
 .second {
-    background-color: rgb(252, 249, 207);
-    border-radius: 25px;
-    padding-left: 10px;
-    margin: 10px;
+  background-color: rgb(252, 249, 207);
+  border-radius: 25px;
+  padding-left: 10px;
+  margin: 10px;
 }
 
 .third {
-    background-color: rgb(252, 226, 203);
-    border-radius: 25px;
-    padding-left: 10px;
-    margin: 10px;
+  background-color: rgb(252, 226, 203);
+  border-radius: 25px;
+  padding-left: 10px;
+  margin: 10px;
 }
 
 .tabContainer {
-    display: flex;
-    flex-direction: row;
+  display: flex;
 }
 
 .tab {
-    border-radius: 25px;
-    background-color: lightcoral;
-    width: 200px;
-    height: 50px;
-    margin: 30px 30px 30px 30px;
+  border-radius: 25px;
+  background-color: lightcoral;
+  width: 200px;
+  height: 50px;
+  margin: 30px 30px 30px 30px;
 }
 
 .option {
-    text-align: center;
+  text-align: center;
 }
