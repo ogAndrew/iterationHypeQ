@@ -52,13 +52,14 @@ function AddMedia({ handleAdd }) {
 
 
   return(
-    <div>
+    <div className="add-media-container">
         <h2>Add Media</h2>
         <form className="add-form" onSubmit={handleSubmit}>
           <input
+            className="cat-time"
             type="text"
             name="title"
-            placeholder="Enter name.."
+            placeholder="Media name"
             value={mediaInput.title}
             onChange={handleChange} />
             
@@ -93,9 +94,10 @@ function AddMedia({ handleAdd }) {
           </select>
             
           <input
+            className="cat-time" 
             type="text"
             name="url"
-            placeholder="Enter media url.."
+            placeholder="Media URL"
             value={mediaInput.url}
             onChange={handleChange} />
             
