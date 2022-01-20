@@ -43,7 +43,5 @@ export async function deleteMedia(id) {
       "Content-Type": "application/json",
     }
   });
-  const updatedMediaResult = await response.json(response);
-  console.log('updatedMediaResult', updatedMediaResult);
-  return updatedMediaResult;
+  return response;
 }

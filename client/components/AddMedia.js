@@ -49,6 +49,7 @@ function AddMedia() {
 
     addMediaToDb(userMedia);
     resetFields();
+    // callback to update parent state
   }
 
 
