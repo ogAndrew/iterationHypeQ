@@ -5,7 +5,7 @@ const userController = {};
 //We ended up not using the salt laid out below because bcrypt generates it for us, should we drop tables and create new tables without the "salt" value?
 const createUserTableQuery = 'CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, username TEXT NOT NULL UNIQUE, hashed_password TEXT NOT NULL, salt TEXT NOT NULL);'
 const getUserQuery = `SELECT * FROM users WHERE username = $1`
-const createNewUserQuery = `INSERT INTO users (username, hashed_password, salt) VALUES ($1, $2, $3) RETURNING username`;
+const createNewUserQuery = `INSERT INTO users (username, hashed_password) VALUES ($1, $2) RETURNING username`;
 
 userController.loginUser = async (req, res, next) => {
   //Destructure username and password from the request body
