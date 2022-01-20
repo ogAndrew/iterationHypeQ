@@ -92,7 +92,7 @@ body {
 }
 
 #edit-btn:hover {
-  background-color: green;
+  background-color: rgb(107, 196, 107);
 }
 #del-btn:hover {
   background-color: red;
@@ -102,11 +102,6 @@ body {
   width: 70%;
 }
 
-.fas {
-}
-
-.fa-edit:hover {
-}
 .fas:hover {
   font-size: 16px;
   cursor: pointer;
