@@ -8,7 +8,7 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
   //   priority: "", 
   //   url: ""
   // })
-  const [card, setCard] = useState([false]);
+  const [editMode, setEditMode] = useState([false]);
 
   // editMode, setEditMode
 

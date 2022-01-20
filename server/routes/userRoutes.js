@@ -4,7 +4,7 @@ const userController = require('../controllers/userController.js');
 const router = express.Router();
 
 //login post request
-router.post('login', userController.loginUser, (req, res) => {
+router.post('/login', userController.loginUser, (req, res) => {
   return res 
       .set('Content-Type', 'application/json')
       .status(200).json({username: res.locals.username, isLoggedIn: res.locals.isLoggedIn})
