@@ -75,9 +75,10 @@ mediaController.updateMedia = (req, res, next) => {
 mediaController.deleteMedia = (req, res, next) => {
   const { id } = req.params; 
   
-  const getListItem = `SELECT * FROM media WHERE id = '${id}';` 
-  //get request to check if the id 
-  db.query(getListItem) 
+  const getListItem = 'SELECT * FROM media WHERE id = $1'
+  const values = [id];
+
+  db.query(getListItem, values)
     .then(response => {
       if(response.rows.length === 0) {
         return next({
@@ -88,8 +89,9 @@ mediaController.deleteMedia = (req, res, next) => {
       }
     })
     .then(() => {
-      const deleteQuery = `DELETE FROM media WHERE id = '${id}';`;
-      db.query(deleteQuery) 
+      const deleteQuery = 'DELETE FROM media WHERE id = $1;';
+      const value = [id]
+      db.query(deleteQuery, value) 
         .then(() => {
           return next()
         })
