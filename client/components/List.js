@@ -2,26 +2,27 @@ import React, { useState, useEffect } from 'react';
 
 import Card from './Card.js';
 import AddMedia from "./AddMedia.js"
-import { updateMedia, fetchMedia } from '../async.js';
+import { updateMedia, fetchMedia, deleteMedia } from '../async.js';
 
 const timeOptions = ['Show All', 15, 30, 60, 120, 'unlimited'];
 const categoryOptions = ['Show All', 'show', 'movie', 'podcast', 'video', 'book'];
 
-function List({ allMedia }) {
+function List() {
   const [list, setList] = useState([]);
   const [select, setSelect] = useState('Show All');
   const [load, setLoad] = useState(true);
 
-  useEffect(() => {
+  useEffect(async () => {
+    const allMedia = await fetchMedia();
+
     if (select === 'Show All') {
       setList(allMedia);
     } else {
       setList(filterList(allMedia));
       setLoad(false);
     }
-  }, [select, allMedia]);
+  }, [select]);
 
-  // handleUpdate(id) 
   async function handleUpdate(id) {
     await updateMedia(id);
     // reset the list with result of fetchMedia
@@ -29,13 +30,13 @@ function List({ allMedia }) {
   };
     // invoke updateMedia(id);
 
-
-   // handleDe deleteMedia(id)lete 
    async function handleDelete(id) {
-     await deleteMedia(id)
-     setList(await fetchMedia());
+     const results = await deleteMedia(id)
+      if (results) {
+        const updatedData = await fetchMedia();
+        setList(updatedData);
+      } 
    };
-    // invoke
 
   function filterList(mediaList) {
     if (!mediaList) return;
@@ -44,6 +45,8 @@ function List({ allMedia }) {
       if (obj.duration === 'unlimited' && select === 'unlimited') {
         return obj;
       }
+      console.log('select', select)
+      console.log(obj.duration)
       return parseInt(obj.duration) <= select || obj.category === select
     });
   }
@@ -51,11 +54,17 @@ function List({ allMedia }) {
   function filterComponents(priority) {
     const components = list.filter(obj => (obj.priority === priority)).map(obj => {
       return (
-        <div className={priority === 1 ? 'first' : priority === 2 ? 'second' : 'third'}>
-          <div key={obj.id}>
-            <Card id={obj.id} title={obj.title} category={obj.category} duration={obj.duration} priority={obj.priority} url={obj.url} 
-            handleUpdate={handleUpdate} handleDelete={handleDelete}/>
-          </div>
+        <div key={obj.id} className={priority === 1 ? 'first' : priority === 2 ? 'second' : 'third'}>
+          <Card 
+            id={obj.id} 
+            title={obj.title} 
+            category={obj.category} 
+            duration={obj.duration} 
+            priority={obj.priority} 
+            url={obj.url} 
+            handleUpdate={handleUpdate} 
+            handleDelete={handleDelete}
+          />
         </div>
       );
     });

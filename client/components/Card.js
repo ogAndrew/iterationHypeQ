@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Card({ title, category, duration, priority, url, id, handleUpdate, handleDelete }) {
-  // const [mediaInput, setMediaInput] = useState({
-  //   title: "", 
-  //   category: "", 
-  //   duration: "", 
-  //   priority: "", 
-  //   url: ""
-  // })
   const [card, setCard] = useState([false]);
+  // const [mediaInput, setMediaInput] = useState({
+    //   title: "", 
+    //   category: "", 
+    //   duration: "", 
+    //   priority: "", 
+    //   url: ""
+    // })
 
   // editMode, setEditMode
 
@@ -27,9 +27,8 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
       <div className="title-button-div">
        <h3>{title}</h3>  
        <div className="edit-del">
-         {/* onClick for each button edit button will invoke handleUpdate */}
-         <button onClick={() => handleUpdate(id)} id="edit-btn"><i class="fas fa-edit"></i></button> 
-         <button onClick={() => handleDelete(id)} id="del-btn"><i class="fas fa-trash-alt"></i></button>
+         <button onClick={() => handleUpdate(id)} id="edit-btn"><i className="fas fa-edit"></i></button> 
+         <button onClick={() => handleDelete(id)} id="del-btn"><i className="fas fa-trash-alt"></i></button>
          </div>
        </div>
       <p>category: {category}</p>
