@@ -10,6 +10,7 @@ function Login() {
     });
 
     const [loggedIn, setloggedIn] = useState(false);
+    const [loginError, setloginError] = useState(null);
 
     async function onLogin() {
         const {username, password} = loginInput; 
@@ -20,9 +21,9 @@ function Login() {
         const userData = await getLogin(userLogin);
         if (userData.isLoggedIn) {
             setloggedIn(true);
+        } else {
+            setloginError(`${userData.errorMessage}`);
         }
-        console.log(userData);
-        console.log('click works!')
     }
 
     if (loggedIn) {
@@ -62,6 +63,7 @@ function Login() {
           <div className="footer">
               <button type="button" className="submitBtn" onClick={onLogin}>Login</button>
           </div>
+          <div className='error'> {loginError && <h3>{loginError}</h3>}</div>
       </div>
   )
 }

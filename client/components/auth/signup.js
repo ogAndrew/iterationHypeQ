@@ -10,6 +10,7 @@ function Signup() {
     });
 
     const [loggedIn, setloggedIn] = useState(false);
+    const [signupError, setSignupError] = useState(null);
 
     async function onSignup(e) {
         e.preventDefault();
@@ -23,8 +24,11 @@ function Signup() {
         const userData = await addSignup(userSignup);
         if (userData.isLoggedIn) {
             setloggedIn(true);
+        } else {
+            setSignupError(`${userData.errorMessage}`);
         }
     }
+
 
     if (loggedIn) {
         return <Navigate to="/" />
@@ -63,6 +67,7 @@ function Signup() {
             <div className="footer">
                 <button type="button" className="submitBtn" onClick={onSignup}>Signup</button>
             </div>
+            <div className='error'> {signupError && <h3>{signupError}</h3>}</div>
         </div>
     )
 }

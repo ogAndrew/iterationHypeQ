@@ -1,11 +1,10 @@
 import React, {useState} from "react"
-import {addMediaToDb} from '../async.js';
 
 const category = ['movie', 'show', 'podcast', 'video'];
 const duration = [15, 30, 45, 60, 90, 120, 'unlimited'];
 const priority = ['1', '2', '3'];
 
-function AddMedia() {
+function AddMedia({ handleAdd }) {
   const [mediaInput, setMediaInput] = useState({
     title: "", 
     category: "", 
@@ -24,7 +23,7 @@ function AddMedia() {
       });
     };
 
-  function handleAdd(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     alert(mediaInput.title)
   
@@ -47,26 +46,27 @@ function AddMedia() {
       });
     };
 
-    addMediaToDb(userMedia);
+    handleAdd(userMedia);
     resetFields();
-    // callback to update parent state
   }
 
 
   return(
-    <div>
+    <div className="add-media-container">
         <h2>Add Media</h2>
-        <form className="add-form">
+        <form className="add-form" onSubmit={handleSubmit}>
           <input
+            className="cat-time"
             type="text"
             name="title"
-            placeholder="Enter name.."
+            placeholder="Media name"
             value={mediaInput.title}
             onChange={handleChange} />
             
           <select 
             className="cat-time"
             name="duration"
+            value={mediaInput.duration}
             onChange={handleChange} >
               <option className="option">Display by Time</option>
               {duration.map(item =>
@@ -76,6 +76,7 @@ function AddMedia() {
           <select 
             className="cat-time"
             name="category"
+            value={mediaInput.category}
             onChange={handleChange} >
               <option className="option">Category</option>
               {category.map(item =>
@@ -85,6 +86,7 @@ function AddMedia() {
           <select 
             className="cat-time"
             name="priority"
+            value={mediaInput.priority}
             onChange={handleChange} >
               <option className="option">Priority</option>
               {priority.map(item =>
@@ -92,13 +94,14 @@ function AddMedia() {
           </select>
             
           <input
+            className="cat-time" 
             type="text"
             name="url"
-            placeholder="Enter media url.."
+            placeholder="Media URL"
             value={mediaInput.url}
             onChange={handleChange} />
             
-          <button className="add-btn" onClick={handleAdd}> Add Media  </button>
+          <input type="submit" value="Add Media" className="add-btn" />
         </form>
     </div>
   );

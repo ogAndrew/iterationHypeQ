@@ -1,17 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 * {
   text-align: center;
   justify-content: center;
   font-family: "Open Sans", sans-serif;
 }
 
-.wrapper {
-  padding: 5px;
-}
-
 body {
   margin: 0;
   padding: 0;
+  background-color: #f5f5f5;
 }
 
 #logo {
@@ -19,28 +16,47 @@ body {
   width: 40px;
 }
 .header-div {
-  background-color: #fd6a02;
+  background-color: #2d4263;
   min-height: 15vh;
   padding-left: 1rem;
   padding-top: 1rem;
   color: #fff;
 }
+
 #title {
+  font-size: 2rem;
   margin-left: 7px;
   margin-bottom: 2px;
+  border: none;
+}
+
+h1 {
+  font-size: 1.2rem;
+}
+
+/* Add Media Section */
+.add-media-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  width: 20vw;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 11px 18px rgba(0, 0, 0, 0.1);
 }
 
 .add-form {
   display: flex;
   flex-direction: column;
 }
-.add-form input,
+
 .cat-time {
   height: 40px;
   font-size: 17px;
   border-radius: 5px;
-  margin-top: 1rem;
-  margin-left: 0.5rem;
+  margin: 10px 0;
+  background-color: #f5f5f5;
 }
 .add-btn {
   height: 3rem;
@@ -50,13 +66,14 @@ body {
   border-radius: 6px;
   border: none;
   margin-top: 5%;
-  background-color: #fd6a02;
+  background-color: #2d4263;
   color: #fff;
   font-weight: bold;
 }
 
 .add-btn:hover {
   cursor: pointer;
+  background-color: #121212;
 }
 
 .ml {
@@ -68,60 +85,63 @@ body {
 }
 
 .add-cont {
-  width: 14%;
+  width: 20%;
 }
 
-.black {
-  color: #000;
-}
 .title-button-div {
   display: flex;
-  margin-right: 1rem;
+  align-items: flex-start;
   justify-content: space-between;
+  margin-bottom: 16px;
 }
 
+/* Action buttons container */
 .edit-del {
-  margin-right: 2rem;
-  margin-top: 1rem;
   display: flex;
 }
 
 .edit-del button {
-  margin-right: 5px;
-  height: 2rem;
+  background-color: #fff;
+  border: none;
+  padding: 16px;
+}
+.edit-del button:hover {
+  cursor: pointer;
+  background-color: #b3541e;
+  color: #fff;
+  border-radius: 100px;
 }
 
-#edit-btn:hover {
-  background-color: green;
-}
-#del-btn:hover {
-  background-color: red;
-}
+/* Media Items Section */
 .flex-container {
+  margin-top: 20px;
   min-height: 60vh;
   width: 70%;
 }
 
-.fas {
-}
-
-.fa-edit:hover {
-}
 .fas:hover {
-  font-size: 16px;
   cursor: pointer;
 }
 .card {
-  width: 90%;
-  margin: auto;
   display: flex;
+  margin: 10px;
+  padding: 20px 20px;
   flex-direction: column;
-  background-color: #333;
-  color: #fff;
-  padding-left: 2rem;
-  margin-bottom: 0.7rem;
-  border-radius: 25px;
-  padding-bottom: 1rem;
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 3px 11px 23px rgba(48, 71, 94, 0.1);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 0;
+}
+
+.card p {
+  margin: 4px 0;
+  text-align: left;
 }
 
 /* Filtered Search area */
@@ -129,21 +149,12 @@ body {
 .three-cols {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 90%;
   flex-wrap: wrap;
 }
 
 .three-cols > div {
-  flex: 33.33%;
-}
-
-.three-cols h1 {
-  margin-right: 0.5rem;
-}
-
-.card > p {
-  padding-left: 20px;
-  line-height: 50%;
+  flex: 30%;
 }
 
 .first {
@@ -160,23 +171,20 @@ body {
   margin: 10px;
 }
 
-.third {
-  background-color: rgb(252, 226, 203);
-  border-radius: 25px;
-  padding-left: 10px;
-  margin: 10px;
-}
-
 .tabContainer {
   display: flex;
 }
 
 .tab {
   border-radius: 25px;
-  background-color: lightcoral;
+  background-color: #2d4263;
+  color: #fff;
   width: 200px;
   height: 50px;
-  margin: 30px 30px 30px 30px;
+  margin: 20px;
+}
+.tab:hover {
+  background-color: #121212;
 }
 
 .option {
@@ -184,14 +192,17 @@ body {
 }
 
 .signup-loginBtn {
-  font-size: 17px; 
-  font-family: "Open Sans", sans-serif; 
-  padding: 5px 20px; 
+  font-size: 17px;
+  font-family: "Open Sans", sans-serif;
+  padding: 6px 20px;
   border: 0;
   background: rgb(252, 252, 252);
-  border-radius: 3px;
-  color: orange;
+  border-radius: 20px;
+  color: #2d4263;
   font-weight: bold;
-  margin-bottom: 2em;
+  margin: 10px 10px 30px;
   cursor: pointer;
+}
+.signup-loginBtn:hover {
+  background-color: #ccd1e4;
 }
