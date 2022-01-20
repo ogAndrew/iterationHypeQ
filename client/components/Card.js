@@ -43,6 +43,7 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
   
   const editCard = () => {
     return (
+      <div className="edit-form">
       <form onSubmit={handleSubmit}>
         <label>
           Title
@@ -89,10 +90,11 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
             value={mediaInput.url} />          
         </label>
         <br />
-        <input onClick={() => setEditMode(false)} type="submit" value="Cancel" />
+        <input className="tab" onClick={() => setEditMode(false)} type="submit" value="Cancel" />
         <br />
-        <input type="submit" value="Submit" />
+        <input className="tab" type="submit" value="Submit" />
       </form>
+      </div>
     )
   }
 
