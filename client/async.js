@@ -45,3 +45,32 @@ export async function deleteMedia(id) {
   });
   return response;
 }
+
+//LOGIN/SIGNUP
+export async function addSignup(userSignup) {
+  const response = await fetch('http://localhost:3000/user/signup', {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userSignup),
+  });
+  const addedUser = await response.json(response);
+  console.log(addedUser)
+  return addedUser; 
+}
+
+export async function getLogin(userLogin) {
+  const response = await fetch('http://localhost:3000/user/login', {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userLogin),
+  });
+  const userObject = await response.json();
+  console.log(userObject)
+  return userObject; 
+}

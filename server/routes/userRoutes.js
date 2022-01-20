@@ -7,15 +7,15 @@ const router = express.Router();
 router.post('/login', userController.loginUser, (req, res) => {
   console.log('userController.loginUser next was called and final callback being run');
   return res 
-      // .set('Content-Type', 'application/json')
-      .status(200).json({userData: res.locals.userObject, isLoggedIn: res.locals.isLoggedIn})
+      .set('Content-Type', 'application/json')
+      .status(200).json({userObject: res.locals.userObject, isLoggedIn: res.locals.isLoggedIn})
 });
 
 //Signup Post request
 router.post('/signup', userController.signupUser, (req, res) => {
   return res
       .set('Content-Type', 'application/json')
-      .status(200).json({userData: res.locals.newUserObject, isLoggedIn: res.locals.isLoggedIn})
+      .status(200).json({userObject: res.locals.userObject, isLoggedIn: res.locals.isLoggedIn})
 });
 
 //Logout Post request
