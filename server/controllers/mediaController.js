@@ -20,7 +20,7 @@ mediaController.getList = (req, res, next) => {
 };
 
 mediaController.addMedia = (req, res, next) => {
-  const query = 'INSERT INTO media(title, category, duration, priority, url) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+  const query = 'INSERT INTO media(title, category, duration, priority, url, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
 
   const data = [
     req.body.title,
@@ -28,6 +28,7 @@ mediaController.addMedia = (req, res, next) => {
     req.body.duration,
     req.body.priority,
     req.body.url,
+    req.body.user_id,
   ];
 
   db.query(query, data)
@@ -47,13 +48,14 @@ mediaController.addMedia = (req, res, next) => {
 mediaController.updateMedia = (req, res, next) => {
   const id = req.params.id
 
-  const query = 'UPDATE media SET title = $1, category = $2, duration = $3, priority = $4, url = $5 WHERE id = $6 RETURNING *';
+  const query = 'UPDATE media SET title = $1, category = $2, duration = $3, priority = $4, url = $5, user_id = $6 WHERE id = $7 RETURNING *';
   const data = [
     req.body.title,
     req.body.category,
     req.body.duration,
     req.body.priority,
     req.body.url,
+    req.body.user_id,
     id,
   ];
 
