@@ -11,6 +11,7 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
   const [editMode, setEditMode] = useState(false);
  
   function handleChange(e) {    
+    e.preventDefault();
     const {name, value} = e.target;   
     console.log("name", name)
     console.log("value", value) 
@@ -23,13 +24,18 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
     };
 
   // handleSubmit
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('handle works')
 
+    // handleUpdate(id, mediaInput)
+    // reset local to be empty
+    // reset editMode to false
   }
   
   const editCard = () => {
     return (
-      <form onSubmit={() => handleSubmit()}>
+      <form onSubmit={handleSubmit}>
         <label>
           Title
           <br />

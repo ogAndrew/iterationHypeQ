@@ -36,10 +36,16 @@ function List() {
     }
   }
 
-  async function handleUpdate(id) {
-    await updateMedia(id);
-    // reset the list with result of fetchMedia
-    setList(await fetchMedia());
+  async function handleUpdate(id, input) {
+    const res = await updateMedia(id, input);
+    const { duration, category } = input;
+    if (res.id) {
+      setCategory(category);
+      setSelect(category);
+      setTime('');
+      setList([res, ...list]);
+    }
+
   };
     // invoke updateMedia(id);
 
