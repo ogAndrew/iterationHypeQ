@@ -5,8 +5,9 @@ const router = express.Router();
 
 //login post request
 router.post('/login', userController.loginUser, (req, res) => {
+  console.log('userController.loginUser next was called and final callback being run');
   return res 
-      .set('Content-Type', 'application/json')
+      // .set('Content-Type', 'application/json')
       .status(200).json({userData: res.locals.userObject, isLoggedIn: res.locals.isLoggedIn})
 });
 
