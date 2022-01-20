@@ -1,16 +1,12 @@
 import React, {useState} from 'react';
-import { Navigate } from 'react-router-dom';
 import loginImage from '../images/login.svg';
 import { addSignup } from '../../async.js';
 
-function Signup() {
+function Signup({loggedIn, setloggedIn, signupError, setSignupError}) {
     const [signupInput, setsignupInput] = useState({
         username: '',
         password: ''
     });
-
-    const [loggedIn, setloggedIn] = useState(false);
-    const [signupError, setSignupError] = useState(null);
 
     async function onSignup(e) {
         e.preventDefault();
@@ -27,11 +23,6 @@ function Signup() {
         } else {
             setSignupError(`${userData.errorMessage}`);
         }
-    }
-
-
-    if (loggedIn) {
-        return <Navigate to="/" />
     }
 
     return (

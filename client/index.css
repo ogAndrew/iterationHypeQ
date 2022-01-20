@@ -53,7 +53,7 @@ h1 {
 
 .cat-time {
   height: 40px;
-  font-size: 17px;
+  font-size: 15px;
   border-radius: 5px;
   margin: 10px 0;
   background-color: #f5f5f5;
@@ -61,8 +61,7 @@ h1 {
 .add-btn {
   height: 3rem;
   padding: 0 2rem;
-  margin-left: 0.5rem;
-  font-size: 17px;
+  font-size: 15px;
   border-radius: 6px;
   border: none;
   margin-top: 5%;
@@ -177,6 +176,8 @@ h1 {
 
 .tab {
   border-radius: 25px;
+  border:0;
+  font-size: 14px;
   background-color: #2d4263;
   color: #fff;
   width: 200px;
@@ -189,6 +190,7 @@ h1 {
 
 .option {
   text-align: center;
+  border: 0;
 }
 
 .signup-loginBtn {

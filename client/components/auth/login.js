@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
 import loginImage from '../images/login.svg';
 import { getLogin } from '../../async.js';
 
-function Login() {
+function Login({loggedIn, setloggedIn, loginError, setloginError}) {
     const [loginInput, setloginInput] = useState({
         username: '',
         password: ''
     });
-
-    const [loggedIn, setloggedIn] = useState(false);
-    const [loginError, setloginError] = useState(null);
 
     async function onLogin() {
         const {username, password} = loginInput; 
@@ -24,10 +20,6 @@ function Login() {
         } else {
             setloginError(`${userData.errorMessage}`);
         }
-    }
-
-    if (loggedIn) {
-        return <Navigate to="/" />
     }
 
   return (
