@@ -27,10 +27,18 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
   function handleSubmit(e) {
     e.preventDefault();
     console.log('handle works')
-
     // handleUpdate(id, mediaInput)
+    handleUpdate(id, mediaInput);
     // reset local to be empty
+    setMediaInput({
+      title: '',
+      category: '', 
+      duration: '', 
+      priority: '', 
+      url: ''
+    });
     // reset editMode to false
+    setEditMode(false);
   }
   
   const editCard = () => {
