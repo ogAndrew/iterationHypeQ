@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Card from './Card.js';
 import AddMedia from "./AddMedia.js"
-import updateMedia, { fetchMedia } from '../async.js';
+import { updateMedia, fetchMedia } from '../async.js';
 
 const timeOptions = ['Show All', 15, 30, 60, 120, 'unlimited'];
 const categoryOptions = ['Show All', 'show', 'movie', 'podcast', 'video', 'book'];
