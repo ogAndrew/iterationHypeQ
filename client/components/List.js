@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 import Card from './Card.js';
 import AddMedia from "./AddMedia.js"
-import { updateMedia, fetchMedia, deleteMedia } from '../async.js';
+import { updateMedia, fetchMedia, deleteMedia, addMediaToDb } from '../async.js';
 
-const timeOptions = ['Show All', 15, 30, 60, 120, 'unlimited'];
+const timeOptions = ['Show All', 15, 30, 45, 60, 90, 120, 'unlimited'];
 const categoryOptions = ['Show All', 'show', 'movie', 'podcast', 'video', 'book'];
 
 function List() {
   const [list, setList] = useState([]);
   const [select, setSelect] = useState('Show All');
+  const [category, setCategory] = useState('');
+  const [time, setTime] = useState('');
   const [load, setLoad] = useState(true);
 
   useEffect(async () => {
@@ -23,6 +25,17 @@ function List() {
     }
   }, [select]);
 
+  async function handleAdd(mediaInput) {
+    const { category } = mediaInput;
+    const res = await addMediaToDb(mediaInput);
+    if (res.id) {
+      setList([res, ...list]);
+      setSelect(category);
+      setCategory(category);
+      setTime('');
+    }
+  }
+
   async function handleUpdate(id) {
     await updateMedia(id);
     // reset the list with result of fetchMedia
@@ -30,13 +43,24 @@ function List() {
   };
     // invoke updateMedia(id);
 
-   async function handleDelete(id) {
-     const results = await deleteMedia(id)
-      if (results) {
-        const updatedData = await fetchMedia();
-        setList(updatedData);
-      } 
-   };
+  async function handleDelete(id) {
+    const results = await deleteMedia(id)
+    if (results) {
+      const updatedData = await fetchMedia();
+      setList(updatedData);
+    } 
+  };
+
+  function handleChange(value) {
+    setSelect(value)
+    if (categoryOptions.includes(value)) {
+      setCategory(value);
+      setTime('');
+    } else {
+      setCategory('');
+      setTime(value);
+    }
+  }
 
   function filterList(mediaList) {
     if (!mediaList) return;
@@ -45,9 +69,7 @@ function List() {
       if (obj.duration === 'unlimited' && select === 'unlimited') {
         return obj;
       }
-      console.log('select', select)
-      console.log(obj.duration)
-      return parseInt(obj.duration) <= select || obj.category === select
+      return obj.duration === select || obj.category === select;
     });
   }
 
@@ -82,7 +104,7 @@ function List() {
       <div className="list-cont">
         
         <div className="add-cont">
-            <AddMedia />
+            <AddMedia handleAdd={handleAdd} />
         </div>
 
         <div className="flex-container ml"> 
@@ -90,12 +112,20 @@ function List() {
           <div>
             <div>
               <div className="tabContainer">
-                <select className="tab" id="time" onChange={e => setSelect(e.target.value)}>
+                <select 
+                  className="tab" 
+                  id="time"
+                  value={time}
+                  onChange={e => handleChange(e.target.value)}>
                   <option className="option">Display by Time</option>
                   {timeOptions.map(item =>
                     <option className="option" key={item} value={item}>{item}</option>)}
                 </select>
-                <select className="tab" id="category" onChange={e => setSelect(e.target.value)}>
+                <select 
+                  className="tab" 
+                  id="category"
+                  value={category}
+                  onChange={e => handleChange(e.target.value)}>
                   <option className="option">Display by Category</option>
                   {categoryOptions.map(item =>
                     <option className="option" key={item} value={item}>{item}</option>)}
