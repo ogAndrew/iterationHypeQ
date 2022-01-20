@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-const category = ['movie', 'show', 'podcast', 'video'];
+const category = ['movie', 'show', 'podcast', 'video', 'book'];
 const duration = [15, 30, 45, 60, 90, 120, 'unlimited'];
 const priority = ['1', '2', '3'];
 
@@ -25,7 +25,6 @@ function AddMedia({ handleAdd }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    alert(mediaInput.title)
   
     const {title, category, duration, priority, url} = mediaInput; 
     const userMedia = {

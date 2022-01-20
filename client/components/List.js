@@ -9,7 +9,7 @@ const categoryOptions = ['Show All', 'show', 'movie', 'podcast', 'video', 'book'
 
 function List() {
   const [list, setList] = useState([]);
-  const [select, setSelect] = useState('Show All');
+  const [select, setSelect] = useState('');
   const [category, setCategory] = useState('');
   const [time, setTime] = useState('');
   const [load, setLoad] = useState(true);
@@ -21,8 +21,8 @@ function List() {
       setList(allMedia);
     } else {
       setList(filterList(allMedia));
-      setLoad(false);
     }
+    setLoad(false)
   }, [select]);
 
   async function handleAdd(mediaInput) {
