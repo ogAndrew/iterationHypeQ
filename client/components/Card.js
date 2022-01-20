@@ -1,75 +1,101 @@
 import React, { useState} from 'react';
 
 function Card({ title, category, duration, priority, url, id, handleUpdate, handleDelete }) {
-  // const [mediaInput, setMediaInput] = useState({
-  //   title: "", 
-  //   category: "", 
-  //   duration: "", 
-  //   priority: "", 
-  //   url: ""
-  // })
+  const [mediaInput, setMediaInput] = useState({
+    title: title, 
+    category: category, 
+    duration: duration, 
+    priority: priority, 
+    url: url
+  })
   const [editMode, setEditMode] = useState(false);
-
-
-  // card of jsx
-    // an input form
-
-
-  // displayCard
-  // editCard
+ 
+  function handleChange(e) {    
+    const {name, value} = e.target;    
+      setMediaInput(prevState => {    
+        return {
+          ...prevState, 
+          [name]:value
+        }
+      });
+    };
 
   // handleSubmit
-  
+  function handleSubmit() {
 
+  }
+  
+  const editCard = () => {
+    return (
+      <form onsubmit={() => handleSubmit()}>
+        <label>
+          Title: 
+          <input onChange={handleChange}
+            type="text" 
+            name="title" 
+            value={mediaInput.title} />          
+        </label>
+        <br />
+        <label>
+          Category: 
+          <input onChange={handleChange}
+            type="text" 
+            name="category" 
+            value={mediaInput.category} />          
+        </label>
+        <br />
+        <label>
+          Duration: 
+          <input onChange={handleChange}
+            type="text" 
+            name="duration" 
+            value={mediaInput.duration} />          
+        </label>
+        <br />
+        <label>
+          Priority: 
+          <input onChange={handleChange}
+            type="text" 
+            name="priority" 
+            value={mediaInput.priority} />          
+        </label>
+        <br />
+        <label>
+          Url: 
+          <input onChange={handleChange}
+            type="text" 
+            name="url" 
+            value={mediaInput.url} />          
+        </label>
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+    )
+  }
+
+const displayCard = () => {
   return(
-    <form onsubmit={() => handleSubmit()}>
-      <div className="card">
+    <div className="card">
       <div className="title-button-div">
-       <h3>{title}</h3>  
-       <div className="edit-del">
-         <button onClick={() => handleUpdate(id)} id="edit-btn"><i className="fas fa-edit"></i></button> 
-         <button onClick={() => handleDelete(id)} id="del-btn"><i className="fas fa-trash-alt"></i></button>
-         </div>
-       </div>
+      <h3>{title}</h3>  
+      <div className="edit-del">
+        {/* onClick for each button edit button will invoke handleUpdate */}
+        <button onClick={() => setEditMode(true)} id="edit-btn"><i class="fas fa-edit"></i></button> 
+        <button onClick={() => handleDelete(id)} id="del-btn"><i class="fas fa-trash-alt"></i></button>
+        </div>
+      </div>
       <p>category: {category}</p>
       <p>duration: {duration} mins</p>
       <p>priority: {priority}</p>
       <p>url: {url}</p>
-      </div>    
-    </form>
+    </div>
+  )};
 
+  return (
+    <div>
+      {editMode === true ? editCard() : displayCard()}
+    </div>
   )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // return(
-  //   <div className="card">
-  //     <div className="title-button-div">
-  //      <h3>{title}</h3>  
-  //      <div className="edit-del">
-  //        {/* onClick for each button edit button will invoke handleUpdate */}
-  //        <button onClick={() => handleUpdate(id)} id="edit-btn"><i class="fas fa-edit"></i></button> 
-  //        <button onClick={() => handleDelete(id)} id="del-btn"><i class="fas fa-trash-alt"></i></button>
-  //        </div>
-  //      </div>
-  //     <p>category: {category}</p>
-  //     <p>duration: {duration} mins</p>
-  //     <p>priority: {priority}</p>
-  //     <p>url: {url}</p>
-  //   </div>
-  // )
-};
+}
 
 export default Card;
