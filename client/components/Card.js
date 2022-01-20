@@ -11,7 +11,9 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
   const [editMode, setEditMode] = useState(false);
  
   function handleChange(e) {    
-    const {name, value} = e.target;    
+    const {name, value} = e.target;   
+    console.log("name", name)
+    console.log("value", value) 
       setMediaInput(prevState => {    
         return {
           ...prevState, 
@@ -27,9 +29,10 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
   
   const editCard = () => {
     return (
-      <form onsubmit={() => handleSubmit()}>
+      <form onSubmit={() => handleSubmit()}>
         <label>
-          Title: 
+          Title
+          <br />
           <input onChange={handleChange}
             type="text" 
             name="title" 
@@ -37,7 +40,8 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
         </label>
         <br />
         <label>
-          Category: 
+          Category
+          <br />
           <input onChange={handleChange}
             type="text" 
             name="category" 
@@ -45,7 +49,8 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
         </label>
         <br />
         <label>
-          Duration: 
+          Duration
+          <br />
           <input onChange={handleChange}
             type="text" 
             name="duration" 
@@ -53,7 +58,8 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
         </label>
         <br />
         <label>
-          Priority: 
+          Priority
+          <br />
           <input onChange={handleChange}
             type="text" 
             name="priority" 
@@ -61,12 +67,15 @@ function Card({ title, category, duration, priority, url, id, handleUpdate, hand
         </label>
         <br />
         <label>
-          Url: 
+          Url
+          <br />
           <input onChange={handleChange}
             type="text" 
             name="url" 
             value={mediaInput.url} />          
         </label>
+        <br />
+        <input onClick={() => setEditMode(false)} type="submit" value="Cancel" />
         <br />
         <input type="submit" value="Submit" />
       </form>
