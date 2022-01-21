@@ -24,7 +24,6 @@ function App() {
               loginError={loginError}
               setloginError={setloginError}/>
   }
-
   if (loggedIn) return <List />
 
   return (

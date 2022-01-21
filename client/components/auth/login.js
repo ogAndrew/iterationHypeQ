@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import loginImage from '../images/login.svg';
 import { getLogin } from '../../async.js';
+import Signup from './signup.js';
+import {Redirect} from 'react-router-dom'
 
 function Login({loggedIn, setloggedIn, loginError, setloginError}) {
     const [loginInput, setloginInput] = useState({
@@ -21,6 +23,7 @@ function Login({loggedIn, setloggedIn, loginError, setloginError}) {
             setloginError(`${userData.errorMessage}`);
         }
     }
+
 
   return (
       <div className="container">
@@ -54,6 +57,7 @@ function Login({loggedIn, setloggedIn, loginError, setloginError}) {
           </div>
           <div className="footer">
               <button type="button" className="submitBtn" onClick={onLogin}>Login</button>
+              <button type="button" className="signupBtn" onClick={()=> window.location.href='/signup'}>Sign Up Now</button>
           </div>
           <div className='error'> {loginError && <h3>{loginError}</h3>}</div>
       </div>
