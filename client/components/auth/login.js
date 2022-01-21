@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
 import loginImage from '../images/login.svg';
 import { getLogin } from '../../async.js';
+import Signup from './signup.js';
+import {Redirect} from 'react-router-dom'
 
-function Login() {
+function Login({loggedIn, setloggedIn, loginError, setloginError}) {
     const [loginInput, setloginInput] = useState({
         username: '',
         password: ''
     });
-
-    const [loggedIn, setloggedIn] = useState(false);
-    const [loginError, setloginError] = useState(null);
 
     async function onLogin() {
         const {username, password} = loginInput; 
@@ -26,9 +24,6 @@ function Login() {
         }
     }
 
-    if (loggedIn) {
-        return <Navigate to="/" />
-    }
 
   return (
       <div className="container">
@@ -62,6 +57,7 @@ function Login() {
           </div>
           <div className="footer">
               <button type="button" className="submitBtn" onClick={onLogin}>Login</button>
+              <button type="button" className="signupBtn" onClick={()=> window.location.href='/signup'}>Sign Up Now</button>
           </div>
           <div className='error'> {loginError && <h3>{loginError}</h3>}</div>
       </div>

@@ -114,7 +114,7 @@ function List() {
             <AddMedia handleAdd={handleAdd} />
         </div>
 
-        <div className="flex-container ml"> 
+        <div className="flex-container"> 
           <h2>Media Items</h2>
           <div>
             <div>
@@ -142,15 +142,15 @@ function List() {
 
             <div className="three-cols ml">
               <div>
-                <h1>Priority 1</h1>
+                <h1>Priority 1:</h1>
                   {!load && filterComponents("1")}
               </div>
               <div>
-                <h1>Priority 2</h1>
+                <h1>Priority 2:</h1>
                   {!load && filterComponents("2")}
               </div>
               <div>
-                <h1>Priority 3</h1>
+                <h1>Priority 3:</h1>
                   {!load && filterComponents("3")}
               </div>
             </div>
