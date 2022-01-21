@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Card from './Card.js';
 import AddMedia from "./AddMedia.js"
+import Header from '../components/Header'
 import { updateMedia, fetchMedia, deleteMedia, addMediaToDb } from '../async.js';
 
 const timeOptions = ['Show All', 15, 30, 45, 60, 90, 120, 'unlimited'];
@@ -107,6 +108,8 @@ function List() {
 
 
   return (
+    <>
+    <Header />
     <div>
       <div className="list-cont">
         
@@ -159,6 +162,7 @@ function List() {
         </div> 
       </div>
     </div>
+    </>
   )
 };
 

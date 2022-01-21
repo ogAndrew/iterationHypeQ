@@ -16,22 +16,14 @@ function App() {
   const [signupError, setSignupError] = useState(null);
   const [loginError, setloginError] = useState(null);
 
-
-  if (!loggedIn) {
-    return <Login 
-              loggedIn={loggedIn} 
-              setloggedIn={setloggedIn} 
-              loginError={loginError}
-              setloginError={setloginError}/>
-  }
-  if (loggedIn) return <List />
-
   return (
     <BrowserRouter>
       <div className="wrapper">
-        <Header />
-        <Routes>
-          <Route path="/" element={<List />} />
+        <Routes> 
+          <Route path="/" element={loggedIn ? <List /> : <Login loggedIn={loggedIn} 
+                                          setloggedIn={setloggedIn} 
+                                          loginError={loginError}
+                                          setloginError={setloginError}/>} />
           <Route path="signup" element={<Signup 
                                           loggedIn={loggedIn} 
                                           setloggedIn={setloggedIn} 
